@@ -1,10 +1,51 @@
 // initialize JS with jQuery
 $(document).ready(function(){
- 
+
+    var heroChosen = true;
+    var enemyChosen = false;
+    var battleVar = false;
+  
+    function heroChoice() {
+     
+        if (heroChosen) {
+            $(this).removeClass( 'hero' );      
+            $(this).addClass( 'champion' );
+            $(this).insertAfter( $( '.your-hero') );
+            $('.hero').insertAfter ( $( '.enemies') );    
+            $('.hero').addClass( 'villain-choices' );
+            $('.villain-choices').removeClass( 'hero' );
+            
+            heroChosen = false;
+            enemyChosen = true;
+        }
+    }
+
+    function villainChoice () {
+        if (enemyChosen) {     
+            $(this).addClass( 'villain' );
+            $(this).insertAfter( $( '.defender') );
+            enemyChosen = false;
+            battleVar = true;
+        }
+    }
+
+    function battle () {
+        if (battleVar) {
+        console.log( $('.champion').text());
+        }
+    }
+
+
+    $('.hero').on('click', heroChoice);
+    $(document).on('click','.villain-choices', villainChoice);
+    $('.attack').on('click', battle);
+    
+
+});
+
 // 1. onclick function - user picks which hero they want to be
 // when clicked, hero selection space dissappears - change div class on the chosen hero to the YOUR HERO section
 // defenders switch to Enemies available to attack area - change div class to the enemy section
-
 
 // 2. onclick function - user picks which defender to play
 // switch class of chosen defender to defender section
@@ -31,5 +72,3 @@ $(document).ready(function(){
 // show restart button
 
 // set a variable to incrment whenever a defender is beaten? listen for the third win?
-
-});

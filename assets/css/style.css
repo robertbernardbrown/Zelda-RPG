@@ -1,5 +1,6 @@
 @font-face { 
-    font-family: HyliaSerifBeta-Regular; src: url('HyliaSerifBeta-Regular.otf'); 
+    font-family: HyliaSerifBeta-Regular; 
+    src: url('HyliaSerifBeta-Regular.otf'); 
 } 
 
 body {
@@ -24,4 +25,49 @@ body {
 .hero:hover {
     border: 2px solid grey;
     outline-offset: 2px;
+}
+
+.champion {
+    border: 2px solid blue;
+    max-width: 20%;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;    
+}
+
+.champion > img {
+    max-width: 150px;
+    max-height: 150px;
+    height: 200px;
+}
+
+.villain-choices {
+    background: red; 
+    border: 2px solid blue;
+    max-width: 20%;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;   
+}
+
+.villain-choices > img {
+    max-width: 150px;
+    max-height: 150px;
+    height: 200px;
+}
+
+.villain {
+    background: black;  
+    color: white;   
+    border: 2px solid blue;
+    max-width: 20%;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;    
+}
+
+.villain > img {
+    max-width: 150px;
+    max-height: 150px;
+    height: 200px;
 }
