@@ -4,10 +4,27 @@ $(document).ready(function(){
     var heroChosen = true;
     var enemyChosen = false;
     var battleVar = false; 
-    var linkHP = 0;
-    var darkLinkHP = 0;
-    var ganondorfHP = 0;
-    var zeldaHP = 0;
+
+    var link = {
+        name: 'Link',
+        hitpoints: 120,
+        attackPower: 8
+    }
+    var zelda = {
+        name: 'Zelda',
+        hitpoints: 100,
+        attackPower: 8
+    }
+    var darkLink = {
+        name: 'Dark Link',
+        hitpoints: 100,
+        attackPower: 8
+    }
+    var ganondorf = {
+        name: 'Ganondorf',
+        hitpoints: 100,
+        attackPower: 8
+    }
 
     function displayHitpoints () {
         linkHP = $('.link').attr('value');
@@ -48,6 +65,7 @@ $(document).ready(function(){
     function battle () {
         if (battleVar) {
         console.log( $('.champion').attr('value'));
+        console.log( $('.villain').attr('value'));
         }
     }
 
