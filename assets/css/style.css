@@ -29,6 +29,7 @@ body {
 
 .champion {
     border: 2px solid blue;
+    background: yellow;
     max-width: 20%;
     display: inline-block;
     text-align: center;

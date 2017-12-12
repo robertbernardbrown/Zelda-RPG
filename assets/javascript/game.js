@@ -3,7 +3,23 @@ $(document).ready(function(){
 
     var heroChosen = true;
     var enemyChosen = false;
-    var battleVar = false;
+    var battleVar = false; 
+    var linkHP = 0;
+    var darkLinkHP = 0;
+    var ganondorfHP = 0;
+    var zeldaHP = 0;
+
+    function displayHitpoints () {
+        linkHP = $('.link').attr('value');
+        darkLinkHP = $('.dark-link').attr('value');
+        ganondorfHP = $('.ganondorf').attr('value');
+        zeldaHP = $('.zelda').attr('value');
+
+        $('.link').append('<h3>' + linkHP + '</h3>')
+        $('.dark-link').append('<h3>' + darkLinkHP + '</h3>')
+        $('.ganondorf').append('<h3>' + ganondorfHP + '</h3>')
+        $('.zelda').append('<h3>' + zeldaHP + '</h3>')
+    }
   
     function heroChoice() {
      
@@ -31,7 +47,7 @@ $(document).ready(function(){
 
     function battle () {
         if (battleVar) {
-        console.log( $('.champion').text());
+        console.log( $('.champion').attr('value'));
         }
     }
 
@@ -40,6 +56,7 @@ $(document).ready(function(){
     $(document).on('click','.villain-choices', villainChoice);
     $('.attack').on('click', battle);
     
+    displayHitpoints();
 
 });
 
