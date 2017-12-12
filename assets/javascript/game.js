@@ -1,5 +1,6 @@
-placeholder
-
+// initialize JS with jQuery
+$(document).ready(function(){
+ 
 // 1. onclick function - user picks which hero they want to be
 // when clicked, hero selection space dissappears - change div class on the chosen hero to the YOUR HERO section
 // defenders switch to Enemies available to attack area - change div class to the enemy section
@@ -29,4 +30,6 @@ placeholder
 // display win message
 // show restart button
 
-//set a variable to incrment whenever a defender is beaten? listen for the third win?
+// set a variable to incrment whenever a defender is beaten? listen for the third win?
+
+});
