@@ -1,1 +1,21 @@
-placeholder
+@font-face { 
+    font-family: HyliaSerifBeta-Regular; src: url('HyliaSerifBeta-Regular.otf'); 
+} 
+
+body {
+    font-family: HyliaSerifBeta-Regular;
+    font-size: 2em;
+}
+
+.hero {
+    border: 2px solid blue;
+    max-width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+
+.hero > img {
+    max-width: 150px;
+    max-height: 150px;
+    height: 200px;
+}
