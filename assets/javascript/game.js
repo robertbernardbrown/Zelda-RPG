@@ -1,8 +1,12 @@
 $(document).ready(function(){
 
     var heroChosen = true;
-    var enemyChosen = false;
+    var defenderChosen = false;
     var battleVar = false; 
+    var Link = new MakeHero ('Link', 120, 8);
+    var Zelda = new MakeHero ('Zelda', 100, 8);
+    var darkLink = new MakeHero ('Dark Link', 100, 8);
+    var ganondorf = new MakeHero ('Ganondorf', 150, 8);
    
     function MakeHero (name, hitPoints, attackPoints) {
         this.name = name;
@@ -10,12 +14,15 @@ $(document).ready(function(){
         this.attackPoints = attackPoints;
     }
 
-    var Link = new MakeHero ('Link', 120, 8);
-    var Zelda = new MakeHero ('Zelda', 100, 8);
-    var darkLink = new MakeHero ('Dark Link', 100, 8);
-    var ganondorf = new MakeHero ('Ganondorf', 150, 8);
-
     console.log(Zelda.hitPoints);
+
+    function displayHero () {
+        $('.hero-selection')
+    }
+
+    function chooseHero () {
+
+    }
     
 });
 

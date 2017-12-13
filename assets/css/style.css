@@ -10,16 +10,11 @@ body {
 
 .hero {
     border: 2px solid blue;
-    max-width: 20%;
-    display: inline-block;
-    text-align: center;
-    padding: 1%;    
 }
 
 .hero > img {
-    max-width: 150px;
-    max-height: 150px;
-    height: 200px;
+    max-width: 100%;
+    max-height: 180px;
 }
 
 .hero:hover {
