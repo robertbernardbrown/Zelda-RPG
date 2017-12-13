@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
-    var heroChosen = true;
-    var defenderChosen = false;
-    var battleVar = false; 
-    var Link = new MakeHero ('Link', 120, 8);
-    var Zelda = new MakeHero ('Zelda', 100, 8);
-    var darkLink = new MakeHero ('Dark Link', 100, 8);
+    var isHero = true;
+    var isDefender = false;
+    var isBattle = false; 
+    var link = new MakeHero ('Link', 120, 8);
+    var zelda = new MakeHero ('Zelda', 100, 8);
+    var darkLink = new MakeHero ('Dark Link', 100, 12);
     var ganondorf = new MakeHero ('Ganondorf', 150, 8);
    
     function MakeHero (name, hitPoints, attackPoints) {
@@ -14,16 +14,67 @@ $(document).ready(function(){
         this.attackPoints = attackPoints;
     }
 
-    console.log(Zelda.hitPoints);
-
-    function displayHero () {
-        $('.hero-selection')
+    function render () {
+        $('.link').prepend(link.name)
+                  .append('<img src="assets/images/link.png" alt="link png">')
+                  .append(link.hitPoints)
+                  .attr('attack', link.attackPoints)
+                  .attr('life', link.hitPoints);
+        $('.zelda').prepend(zelda.name)
+                   .append('<img src="assets/images/zelda.png" alt="zelda png">')
+                   .append(zelda.hitPoints)
+                   .attr('attack', zelda.attackPoints)
+                   .attr('life', zelda.hitPoints);
+        $('.dark-link').prepend(darkLink.name)
+                       .append('<img src="assets/images/dark-link.png" alt="dark link png">')
+                       .append(darkLink.hitPoints)
+                       .attr('attack', darkLink.attackPoints)
+                       .attr('life', darkLink.hitPoints);
+        $('.ganondorf').prepend(ganondorf.name)
+                       .append('<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+                       .append(ganondorf.hitPoints)
+                       .attr('attack', ganondorf.attackPoints)
+                       .attr('life', ganondorf.hitPoints);
     }
 
     function chooseHero () {
-
+        if(isHero) {
+            $(this).detach();
+            $(this).removeClass('hero');
+            $(this).addClass('champion');
+            $(this).appendTo('.your-hero');
+            $('.hero').addClass('defenders');
+            $('.hero').removeClass('hero');
+            isHero = false;
+            isDefender = true;
+        }
     }
+
+    function chooseDefender () {
+        if(isDefender) {
+            $(this).detach();
+            $(this).appendTo('.defender');
+            $(this).removeClass('defenders');
+            $(this).addClass('villain');
+            isDefender = false;
+            isBattle = true;
+        }
+    }
+
+    function fight () {
+       var champAttack = $('.champion').attr('attack')
+       var villainAttack =  $('.villain').attr('attack')
+       var champLife = 
+       var villainLife = 
+    }
+
+
+
+    $('.hero').on('click', chooseHero);
+    $(document).on('click', '.defenders', chooseDefender);
+    $('.fight').on('click', fight);
     
+    render();
 });
 
 // 1. onclick function - user picks which hero they want to be
