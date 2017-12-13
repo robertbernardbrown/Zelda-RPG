@@ -4,33 +4,35 @@ $(document).ready(function(){
     var heroChosen = true;
     var enemyChosen = false;
     var battleVar = false; 
-
-    var link = {
-        name: 'Link',
-        hitpoints: 120,
-        attackPower: 8
-    }
-    var zelda = {
-        name: 'Zelda',
-        hitpoints: 100,
-        attackPower: 8
-    }
-    var darkLink = {
-        name: 'Dark Link',
-        hitpoints: 100,
-        attackPower: 8
-    }
-    var ganondorf = {
-        name: 'Ganondorf',
-        hitpoints: 100,
-        attackPower: 8
+   
+    var allHeroes = {
+        link: {
+            name: 'Link',
+            hitpoints: 120,
+            attackpoints: 8
+        },
+        darkLink: {
+            name: 'Dark Link',
+            hitpoints: 100,
+            attackpoints: 8
+        },
+        ganondorf: {
+            name: 'Ganondorf',
+            hitpoints: 150,
+            attackpoints: 8
+        },
+        zelda: {
+            name: 'Zelda',
+            hitpoints: 100,
+            attackpoints: 8
+        }
     }
 
     function displayHitpoints () {
-        linkHP = $('.link').attr('value');
-        darkLinkHP = $('.dark-link').attr('value');
-        ganondorfHP = $('.ganondorf').attr('value');
-        zeldaHP = $('.zelda').attr('value');
+        linkHP = allHeroes.link.hitpoints
+        darkLinkHP = allHeroes.darkLink.hitpoints
+        ganondorfHP = allHeroes.ganondorf.hitpoints
+        zeldaHP = allHeroes.zelda.hitpoints
 
         $('.link').append('<h3>' + linkHP + '</h3>')
         $('.dark-link').append('<h3>' + darkLinkHP + '</h3>')
@@ -64,8 +66,8 @@ $(document).ready(function(){
 
     function battle () {
         if (battleVar) {
-        console.log( $('.champion').attr('value'));
-        console.log( $('.villain').attr('value'));
+        allHeroes.link.hitpoints - allHeroes.ganondorf.attackpoints
+        
         }
     }
 
