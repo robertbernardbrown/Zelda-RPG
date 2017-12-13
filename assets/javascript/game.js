@@ -3,6 +3,8 @@ $(document).ready(function(){
     var isHero = true;
     var isDefender = false;
     var isBattle = false; 
+    var fightOne = 0
+    var fightTwo = 0
     var link = new MakeHero ('Link', 120, 8);
     var zelda = new MakeHero ('Zelda', 100, 8);
     var darkLink = new MakeHero ('Dark Link', 100, 12);
@@ -15,24 +17,24 @@ $(document).ready(function(){
     }
 
     function render () {
-        $('.link').prepend(link.name)
+        $('.link').prepend('<h1>' + link.name + '</h1>')
                   .append('<img src="assets/images/link.png" alt="link png">')
-                  .append(link.hitPoints)
+                  .append('<h2>' + link.hitPoints + '</h2>')
                   .attr('attack', link.attackPoints)
                   .attr('life', link.hitPoints);
-        $('.zelda').prepend(zelda.name)
+        $('.zelda').prepend('<h1>' + zelda.name + '</h1>')
                    .append('<img src="assets/images/zelda.png" alt="zelda png">')
-                   .append(zelda.hitPoints)
+                   .append('<h2>' + zelda.hitPoints + '</h2>')
                    .attr('attack', zelda.attackPoints)
                    .attr('life', zelda.hitPoints);
-        $('.dark-link').prepend(darkLink.name)
+        $('.dark-link').prepend('<h1>' + darkLink.name + '</h1>')
                        .append('<img src="assets/images/dark-link.png" alt="dark link png">')
-                       .append(darkLink.hitPoints)
+                       .append('<h2>' + darkLink.hitPoints + '</h2>')
                        .attr('attack', darkLink.attackPoints)
                        .attr('life', darkLink.hitPoints);
-        $('.ganondorf').prepend(ganondorf.name)
+        $('.ganondorf').prepend('<h1>' + ganondorf.name + '</h1>')
                        .append('<img src="assets/images/ganondorf.png" alt="ganondorf png">')
-                       .append(ganondorf.hitPoints)
+                       .append('<h2>' + ganondorf.hitPoints + '</h2>')
                        .attr('attack', ganondorf.attackPoints)
                        .attr('life', ganondorf.hitPoints);
     }
@@ -44,6 +46,7 @@ $(document).ready(function(){
             $(this).addClass('champion');
             $(this).appendTo('.your-hero');
             $('.hero').addClass('defenders');
+            $('.defenders').appendTo('.enemies')
             $('.hero').removeClass('hero');
             isHero = false;
             isDefender = true;
@@ -60,19 +63,21 @@ $(document).ready(function(){
             isBattle = true;
         }
     }
+    
 
-    function fight () {
-       var champAttack = $('.champion').attr('attack')
-       var villainAttack =  $('.villain').attr('attack')
-       var champLife = 
-       var villainLife = 
+    function fight (championObject, villainObject) {
+            var championLife = championObject.hitPoints
+            var championAttack = championObject.attackPoints
+            var villainLife = villainObject.hitPoints
+            var villainAttack = villainObject.attackPoints
+            console.log(championLife, championAttack, villainLife, villainAttack)
     }
 
 
 
     $('.hero').on('click', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    $('.fight').on('click', fight);
+    $('.fight').on('click', function () { fight(link, zelda); });
     
     render();
 });
