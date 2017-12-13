@@ -3,12 +3,12 @@ $(document).ready(function(){
     var isHero = true;
     var isDefender = false;
     var isBattle = false; 
-    var fightOne = 0
-    var fightTwo = 0
     var link = new MakeHero ('Link', 120, 8);
-    var zelda = new MakeHero ('Zelda', 100, 8);
+    var zelda = new MakeHero ('Zelda', 100, 12);
     var darkLink = new MakeHero ('Dark Link', 100, 12);
     var ganondorf = new MakeHero ('Ganondorf', 150, 8);
+    var champion = link
+    var villain = zelda
    
     function MakeHero (name, hitPoints, attackPoints) {
         this.name = name;
@@ -70,14 +70,15 @@ $(document).ready(function(){
             var championAttack = championObject.attackPoints
             var villainLife = villainObject.hitPoints
             var villainAttack = villainObject.attackPoints
-            console.log(championLife, championAttack, villainLife, villainAttack)
+            console.log(championLife = championLife - villainAttack)
+
     }
 
 
 
     $('.hero').on('click', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    $('.fight').on('click', function () { fight(link, zelda); });
+    $('.fight').on('click', function () { fight(champion, villain); });
     
     render();
 });
