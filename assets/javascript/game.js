@@ -9,8 +9,6 @@ $(document).ready(function(){
     hero_3: new MakeHero ('Dark-Link', 100, 12, '<img src="assets/images/dark-link.png" alt="dark link png">'),
     hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
     };
-    // var champion = link
-    // var villain = zelda
    
     function MakeHero (name, hitPoints, attackPoints, image) {
         this.name = name;
@@ -22,8 +20,8 @@ $(document).ready(function(){
     function render (object) {
         for (i in object) {
             if (!object.hasOwnProperty(i)) continue; {
-        $('.row').prepend('<div class="col-xs-6 col-md-3 hero thumbnail '+ object[i].name +'" >')
-        $('.' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
+        $('.row').prepend('<div class="col-xs-6 col-md-3 hero thumbnail"' + 'id = "' + object[i].name + '">')
+        $('#' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
                   .append(object[i].image)
                   .append('<h2>' + object[i].hitPoints + '</h2>')
                   .attr('attack', object[i].attackPoints)
@@ -44,6 +42,7 @@ $(document).ready(function(){
             $('.hero').removeClass('hero');
             isHero = false;
             isDefender = true;
+            champion();
         }
     }
 
@@ -55,6 +54,7 @@ $(document).ready(function(){
             $(this).addClass('villain');
             isDefender = false;
             isBattle = true;
+            villain();
         }
     }
     
@@ -63,16 +63,31 @@ $(document).ready(function(){
     var villainLife
     var villainAttack
 
+    var champion = function () {
+        var champId = $('.champion').attr('id');
+        for(var i in heroes) {
+            if( heroes[i].name == champId) {
+                return (heroes[i]);
+            }
+        }
+    }
+    
+    var villain = function () { 
+        var villainId = $('.villain').attr('id');
+        for(var i in heroes) {
+            if( heroes[i].name == villainId) {
+                return (heroes[i]);
+            }
+        }
+    }
+
+
     function fight (championObject, villainObject) {
             championLife = championObject.hitPoints
             championAttack = championObject.attackPoints
             villainLife = villainObject.hitPoints
             villainAttack = villainObject.attackPoints
-
-            function innerFunc () {
-                console.log(championLife = championLife - villainAttack)                
-            }
-            innerFunc();
+            console.log(championLife, championAttack);
 
     }
 
@@ -80,7 +95,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.hero', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    $('.fight').on('click', function () { fight(champion, villain); });
+    $(document).on('click', '.fight', function () { fight(champion(), villain()); });
     
 
     render(heroes);
