@@ -3,41 +3,41 @@ $(document).ready(function(){
     var isHero = true;
     var isDefender = false;
     var isBattle = false; 
-    var link = new MakeHero ('Link', 120, 8);
-    var zelda = new MakeHero ('Zelda', 100, 12);
-    var darkLink = new MakeHero ('Dark Link', 100, 12);
-    var ganondorf = new MakeHero ('Ganondorf', 150, 8);
-    var champion = link
-    var villain = zelda
+    var heroes = {   
+    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
+    hero_2: new MakeHero ('Zelda', 100, 12, '<img src="assets/images/zelda.png" alt="zelda png">'),
+    hero_3: new MakeHero ('Dark-Link', 100, 12, '<img src="assets/images/dark-link.png" alt="dark link png">'),
+    hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+    };
+    // var champion = link
+    // var villain = zelda
    
-    function MakeHero (name, hitPoints, attackPoints) {
+    function MakeHero (name, hitPoints, attackPoints, image) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.attackPoints = attackPoints;
+        this.image = image;
     }
 
-    function render () {
-        $('.link').prepend('<h1>' + link.name + '</h1>')
-                  .append('<img src="assets/images/link.png" alt="link png">')
-                  .append('<h2>' + link.hitPoints + '</h2>')
-                  .attr('attack', link.attackPoints)
-                  .attr('life', link.hitPoints);
-        $('.zelda').prepend('<h1>' + zelda.name + '</h1>')
-                   .append('<img src="assets/images/zelda.png" alt="zelda png">')
-                   .append('<h2>' + zelda.hitPoints + '</h2>')
-                   .attr('attack', zelda.attackPoints)
-                   .attr('life', zelda.hitPoints);
-        $('.dark-link').prepend('<h1>' + darkLink.name + '</h1>')
-                       .append('<img src="assets/images/dark-link.png" alt="dark link png">')
-                       .append('<h2>' + darkLink.hitPoints + '</h2>')
-                       .attr('attack', darkLink.attackPoints)
-                       .attr('life', darkLink.hitPoints);
-        $('.ganondorf').prepend('<h1>' + ganondorf.name + '</h1>')
-                       .append('<img src="assets/images/ganondorf.png" alt="ganondorf png">')
-                       .append('<h2>' + ganondorf.hitPoints + '</h2>')
-                       .attr('attack', ganondorf.attackPoints)
-                       .attr('life', ganondorf.hitPoints);
-    }
+
+    
+    var i = 0
+    function render (object) {
+        for (i in object) {
+            if (!object.hasOwnProperty(i)) continue; {
+        $('.row').prepend('<div class="col-xs-6 col-md-3 hero thumbnail '+ object[i].name +'" >')
+        $('.' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
+                  .append(object[i].image)
+                  .append('<h2>' + object[i].hitPoints + '</h2>')
+                  .attr('attack', object[i].attackPoints)
+                  .attr('life', object[i].hitPoints);
+        $('.row').append('</div>')
+                    }
+                }
+            }
+
+
+
 
     function chooseHero () {
         if(isHero) {
@@ -64,13 +64,21 @@ $(document).ready(function(){
         }
     }
     
+    var championLife
+    var championAttack
+    var villainLife
+    var villainAttack
 
     function fight (championObject, villainObject) {
-            var championLife = championObject.hitPoints
-            var championAttack = championObject.attackPoints
-            var villainLife = villainObject.hitPoints
-            var villainAttack = villainObject.attackPoints
-            console.log(championLife = championLife - villainAttack)
+            championLife = championObject.hitPoints
+            championAttack = championObject.attackPoints
+            villainLife = villainObject.hitPoints
+            villainAttack = villainObject.attackPoints
+
+            function innerFunc () {
+                console.log(championLife = championLife - villainAttack)                
+            }
+            innerFunc();
 
     }
 
@@ -78,9 +86,10 @@ $(document).ready(function(){
 
     $('.hero').on('click', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    $('.fight').on('click', function () { fight(champion, villain); });
+    // $('.fight').on('click', function () { fight(champion, villain); });
     
-    render();
+
+    render(heroes);
 });
 
 // 1. onclick function - user picks which hero they want to be
