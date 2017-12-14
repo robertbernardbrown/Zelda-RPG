@@ -19,9 +19,6 @@ $(document).ready(function(){
         this.image = image;
     }
 
-
-    
-    var i = 0
     function render (object) {
         for (i in object) {
             if (!object.hasOwnProperty(i)) continue; {
@@ -35,9 +32,6 @@ $(document).ready(function(){
                     }
                 }
             }
-
-
-
 
     function chooseHero () {
         if(isHero) {
@@ -84,9 +78,9 @@ $(document).ready(function(){
 
 
 
-    $('.hero').on('click', chooseHero);
+    $(document).on('click', '.hero', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    // $('.fight').on('click', function () { fight(champion, villain); });
+    $('.fight').on('click', function () { fight(champion, villain); });
     
 
     render(heroes);
