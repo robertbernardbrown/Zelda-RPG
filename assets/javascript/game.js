@@ -58,11 +58,6 @@ $(document).ready(function(){
         }
     }
     
-    var championLife
-    var championAttack
-    var villainLife
-    var villainAttack
-
     var champion = function () {
         var champId = $('.champion').attr('id');
         for(var i in heroes) {
@@ -71,7 +66,7 @@ $(document).ready(function(){
             }
         }
     }
-    
+
     var villain = function () { 
         var villainId = $('.villain').attr('id');
         for(var i in heroes) {
@@ -81,14 +76,10 @@ $(document).ready(function(){
         }
     }
 
-
     function fight (championObject, villainObject) {
-            championLife = championObject.hitPoints
-            championAttack = championObject.attackPoints
-            villainLife = villainObject.hitPoints
-            villainAttack = villainObject.attackPoints
-            console.log(championLife, championAttack);
-
+        champion().hitPoints -= villain().attackPoints
+        villain().hitPoints -= champion().attackPoints
+        console.log(champion().hitPoints, villain().hitPoints)
     }
 
 
@@ -97,7 +88,6 @@ $(document).ready(function(){
     $(document).on('click', '.defenders', chooseDefender);
     $(document).on('click', '.fight', function () { fight(champion(), villain()); });
     
-
     render(heroes);
 });
 
