@@ -76,17 +76,20 @@ $(document).ready(function(){
         }
     }
 
-    function fight (championObject, villainObject) {
+    var counter = 1
+    function fight () {
         champion().hitPoints -= villain().attackPoints
         villain().hitPoints -= champion().attackPoints
-        console.log(champion().hitPoints, villain().hitPoints)
+        champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter)
+        counter++
+        console.log(champion().attackPoints)
     }
 
 
 
     $(document).on('click', '.hero', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
-    $(document).on('click', '.fight', function () { fight(champion(), villain()); });
+    $(document).on('click', '.fight', fight);
     
     render(heroes);
 });
