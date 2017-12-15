@@ -109,10 +109,22 @@ $(document).ready(function(){
         }
     }
 
+    var winCounter = 0
     function chooseAnotherHero () {
+        winCounter++
+        if (winCounter < (Object.keys(heroes).length - 1)) {
         $('.fight-text').append('<h3> You defeated ' + villain().name + '! Choose the next defender to attack. </h3>')
         $('#' + villain().name).detach();
         isDefender = true;
+        }
+        else if (winCounter === (Object.keys(heroes).length - 1)) {
+            win()
+        }
+    }
+
+    function win () {
+        $('.fight-text').append('<h3> You defeated ' + villain().name + '! You won! The Triforce is yours') 
+        $('#' + villain().name).detach();
     }
 
     function lose () {
