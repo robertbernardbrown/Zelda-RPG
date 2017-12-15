@@ -5,8 +5,8 @@ $(document).ready(function(){
     var isBattle = false; 
     var heroes = {   
     hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
-    hero_2: new MakeHero ('Zelda', 100, 12, '<img src="assets/images/zelda.png" alt="zelda png">'),
-    hero_3: new MakeHero ('Dark-Link', 100, 12, '<img src="assets/images/dark-link.png" alt="dark link png">'),
+    hero_2: new MakeHero ('Zelda', 100, 8, '<img src="assets/images/zelda.png" alt="zelda png">'),
+    hero_3: new MakeHero ('Dark-Link', 100, 8, '<img src="assets/images/dark-link.png" alt="dark link png">'),
     hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
     };
    
@@ -76,15 +76,37 @@ $(document).ready(function(){
         }
     }
 
-    var counter = 1
+    var counter = 0
     function fight () {
         champion().hitPoints -= villain().attackPoints
         villain().hitPoints -= champion().attackPoints
-        champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter)
         counter++
-        console.log(champion().attackPoints)
+        if (counter > 1) {
+            champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter)
+        }
+        $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hit points. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
+        
+        $('.champion h2').html(champion().hitPoints);
+        $('.villain h2').html(villain().hitPoints);
+
+        if (champion().hitPoints <= 0) {
+            lose();
+        }
+        if (villain().hitPoints <= 0) {
+            chooseAnotherHero();
+
+        }
+
+        console.log(champion().hitPoints)
     }
 
+    function chooseAnotherHero () {
+
+    }
+
+    function lose () {
+        
+    }
 
 
     $(document).on('click', '.hero', chooseHero);
