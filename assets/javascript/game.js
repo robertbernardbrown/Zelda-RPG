@@ -110,7 +110,7 @@ $(document).ready(function(){
                 }
 
             counter++
-            if (counter = 1) {
+            if (counter === 1) {
                 champion().attackPoints = champion().attackPoints + (champion().attackPoints)
             }
             else if (counter > 1) {
