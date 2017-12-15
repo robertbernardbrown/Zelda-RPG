@@ -62,6 +62,8 @@ $(document).ready(function(){
             isBattle = true;
             villain();
             $('.fight-text').empty();
+            $('.fight-text').append('<div class = "fight-text-hero"></div>')
+            $('.fight-text').append('<div class = "fight-text-villain"></div>')
         }
     }
     
@@ -86,11 +88,17 @@ $(document).ready(function(){
     var counter = 0
     function fight () {
         if (isBattle) {
-            champion().hitPoints -= villain().attackPoints
-            villain().hitPoints -= champion().attackPoints
-            $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hitpoints. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
-            $('.champion h2').html(champion().hitPoints);
-            $('.villain h2').html(villain().hitPoints);
+                if (champion().hitPoints > 0) {
+                    champion().hitPoints -= villain().attackPoints
+                    $('.fight-text-hero').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hitpoints. </h2>')
+                    $('.champion h2').html(champion().hitPoints);
+                }
+                if (villain().hitPoints > 0) {
+                    villain().hitPoints -= champion().attackPoints
+                    $('.fight-text-villain').html('<h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
+                    $('.villain h2').html(villain().hitPoints);
+                }
+
             counter++
             if (counter = 1) {
                 champion().attackPoints = champion().attackPoints + (champion().attackPoints)
