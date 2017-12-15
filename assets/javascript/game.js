@@ -20,7 +20,7 @@ $(document).ready(function(){
     function render (object) {
         for (i in object) {
             if (!object.hasOwnProperty(i)) continue; {
-        $('.row').prepend('<div class="col-xs-6 col-md-3 hero thumbnail"' + 'id = "' + object[i].name + '">');
+        $('.row').prepend('<div class="hero thumbnail"' + 'id = "' + object[i].name + '">');
         $('#' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
                   .append(object[i].image)
                   .append('<h2>' + object[i].hitPoints + '</h2>')
@@ -85,6 +85,7 @@ $(document).ready(function(){
 
     var counter = 0
     function fight () {
+        noAttack();
         if (isBattle) {
             $('.fight-text-hero').empty();
             $('.fight-text-villain').empty();
@@ -122,6 +123,15 @@ $(document).ready(function(){
                 chooseAnotherHero();
                 isBattle = false;
             }
+        }
+    }
+
+    function noAttack () {
+        if (isHero && !isBattle && !isDefender) {
+            $('.fight-text').html('<h3> Please choose a champion </h3>');
+        }
+        else if (!isHero && !isBattle && isDefender) {
+            $('.fight-text').html('<h3> Please choose an enemy </h3>');
         }
     }
 
