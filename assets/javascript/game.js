@@ -78,33 +78,36 @@ $(document).ready(function(){
 
     var counter = 0
     function fight () {
-        champion().hitPoints -= villain().attackPoints
-        villain().hitPoints -= champion().attackPoints
-        counter++
-        if (counter > 1) {
-            champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter)
-        }
-        $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hit points. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
-        
-        $('.champion h2').html(champion().hitPoints);
-        $('.villain h2').html(villain().hitPoints);
+        if (isBattle) {
+            champion().hitPoints -= villain().attackPoints
+            villain().hitPoints -= champion().attackPoints
+            $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hit points. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
+            $('.champion h2').html(champion().hitPoints);
+            $('.villain h2').html(villain().hitPoints);
+            counter++
+            if (counter = 1) {
+                champion().attackPoints = champion().attackPoints + (champion().attackPoints)
+            }
+            else if (counter > 1) {
+                champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter)
+            }
 
-        if (champion().hitPoints <= 0) {
-            lose();
-        }
-        if (villain().hitPoints <= 0) {
-            chooseAnotherHero();
+            if (champion().hitPoints <= 0) {
+                lose();
+            }
+            if (villain().hitPoints <= 0) {
+                chooseAnotherHero();
 
+            }
         }
-
-        console.log(champion().hitPoints)
     }
 
     function chooseAnotherHero () {
-
+        $('.fight-text').append('<h3> You defeated ' + villain().name + '! Choose the next defender to attack. </h3>')
     }
 
     function lose () {
+        $('.fight-text').append('<h3> You lost! Try Again? </h3>')
         
     }
 
