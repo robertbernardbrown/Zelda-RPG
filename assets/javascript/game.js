@@ -29,6 +29,12 @@ $(document).ready(function(){
         $('.row').append('</div>')
                     }
                 }
+                $('.your-hero').append('<h2> Your hero: </h2>')
+                $('.enemies').append('<h2> Enemies available to attack: </h2>')
+                $('.fight').prepend('<h2> Fight Section </h2>')
+                $('.fight').append('<div class = "btn btn-primary attack">Attack</div>')
+                $('.fight').append('<div class = "fight-text"></div>')
+                $('.defender').append('<h2> Defender: </h2>')
             }
 
     function chooseHero () {
@@ -55,6 +61,7 @@ $(document).ready(function(){
             isDefender = false;
             isBattle = true;
             villain();
+            $('.fight-text').empty();
         }
     }
     
@@ -81,7 +88,7 @@ $(document).ready(function(){
         if (isBattle) {
             champion().hitPoints -= villain().attackPoints
             villain().hitPoints -= champion().attackPoints
-            $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hit points. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
+            $('.fight-text').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hitpoints. </h2> <br> <h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>')
             $('.champion h2').html(champion().hitPoints);
             $('.villain h2').html(villain().hitPoints);
             counter++
@@ -95,26 +102,34 @@ $(document).ready(function(){
             if (champion().hitPoints <= 0) {
                 lose();
             }
-            if (villain().hitPoints <= 0) {
+            else if (villain().hitPoints <= 0) {
                 chooseAnotherHero();
-
+                isBattle = false
             }
         }
     }
 
     function chooseAnotherHero () {
         $('.fight-text').append('<h3> You defeated ' + villain().name + '! Choose the next defender to attack. </h3>')
+        $('#' + villain().name).detach();
+        isDefender = true;
     }
 
     function lose () {
         $('.fight-text').append('<h3> You lost! Try Again? </h3>')
-        
+        $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>')
+        var isBattle = false; 
+    }
+
+    function reset () {
+        window.location.reload();
     }
 
 
     $(document).on('click', '.hero', chooseHero);
     $(document).on('click', '.defenders', chooseDefender);
     $(document).on('click', '.fight', fight);
+    $(document).on('click', '.reset', reset);
     
     render(heroes);
 });
