@@ -24,8 +24,6 @@ $(document).ready(function(){
         $('#' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
                   .append(object[i].image)
                   .append('<h2>' + object[i].hitPoints + '</h2>')
-                  .attr('attack', object[i].attackPoints)
-                  .attr('life', object[i].hitPoints);
         $('.row').append('</div>');
                     }
                 }

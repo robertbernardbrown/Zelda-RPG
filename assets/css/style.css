@@ -4,13 +4,18 @@
 } 
 
 body {
-    font-family: HyliaSerifBeta-Regular;
+    font-family: HyliaSerifBeta-Regular, Georgia, 'Times New Roman', Times, serif;
     font-size: 2em;
+}
+
+container {
+    display:flex;
 }
 
 .hero {
     border: 2px solid blue;
     text-align: center;
+    outline-offset: 2px;
 }
 
 .hero > img {
@@ -26,7 +31,9 @@ body {
 .champion {
     border: 2px solid blue;
     background: yellow;
-    text-align: center;  
+    text-align: center;
+    outline-offset: 2px;
+    flex: 1;
 }
 
 .champion > img {
@@ -50,6 +57,7 @@ body {
     color: white;   
     border: 2px solid blue;
     text-align: center; 
+    outline-offset: 2px;
 }
 
 .villain > img {
