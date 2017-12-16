@@ -97,7 +97,6 @@ $(document).ready(function(){
     //choose a random sound to play for each hero
     function randomAttackSound () {
         var multiplier = Math.floor(Math.random() * (champion().attackSounds.length));
-        console.log(multiplier);
         champion().attackSounds[multiplier].play();
     }
 
@@ -107,6 +106,7 @@ $(document).ready(function(){
     function fight () {
         noAttack();
         if (isBattle) {
+            console.log(champion().hitPoints, champion().attackPoints, villain().hitPoints, villain().attackPoints)
             randomAttackSound();
             $('.fight-text-hero').empty();
             $('.fight-text-villain').empty();
@@ -201,7 +201,7 @@ $(document).ready(function(){
         $('.enemies').empty();
         $('.fight').empty();
         $('.defender').empty();
-        var heroes = {   
+        heroes = {   
             hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
             hero_2: new MakeHero ('Zelda', 150, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
             hero_3: new MakeHero ('Dark-Link', 100, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklinkIntro.wav'), [new Audio ('assets/sounds/darklinkAttack.wav'), new Audio ('assets/sounds/darklinkAttack2.wav')]),
