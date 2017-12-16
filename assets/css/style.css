@@ -137,3 +137,43 @@ container {
     background-position: center;
     color: white;
 }
+
+@media only screen 
+and (min-width: 414px) 
+and (max-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+
+#Ganondorf {
+    background-image: url('../images/ganonbackground.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Dark-Link {
+    background-image: url('../images/darklinkbackground.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Zelda {
+    background-image: url('../images/zeldabackground.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Link {
+    background-image: url('../images/linkbackground.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+    
+}
