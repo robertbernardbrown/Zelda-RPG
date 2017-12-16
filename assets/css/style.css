@@ -143,7 +143,6 @@ container {
     #Ganondorf {
         background-image: url('../images/ganonbackground.jpg');
         background-repeat: repeat;
-        background-attachment: fixed;
         background-position: center;
         color: white;
     }
@@ -151,7 +150,6 @@ container {
     #Dark-Link {
         background-image: url('../images/darklinkbackground.jpg');
         background-repeat: repeat;
-        background-attachment: fixed;
         background-position: center;
         color: white;
     }
@@ -159,7 +157,6 @@ container {
     #Zelda {
         background-image: url('../images/zeldabackground.jpg');
         background-repeat: repeat;
-        background-attachment: fixed;
         background-position: center;
         color: white;
     }
@@ -167,7 +164,6 @@ container {
     #Link {
         background-image: url('../images/linkbackground.png');
         background-repeat: repeat;
-        background-attachment: fixed;
         background-position: center;
         color: white;
     }
