@@ -144,35 +144,30 @@ container {
         background-image: url('../images/ganonbackground.jpg');
         background-repeat: repeat;
         background-position: center;
-        color: white;
     }
     
     #Dark-Link {
         background-image: url('../images/darklinkbackground.jpg');
         background-repeat: repeat;
         background-position: center;
-        color: white;
     }
     
     #Zelda {
         background-image: url('../images/zeldabackground.jpg');
         background-repeat: repeat;
         background-position: center;
-        color: white;
     }
     
     #Link {
         background-image: url('../images/linkbackground.png');
         background-repeat: repeat;
         background-position: center;
-        color: white;
     }
 
     body {
         background-image: url('../images/background.png');
         background-repeat: repeat;
         background-position: center;
-        color: white;
     }
      
     }
