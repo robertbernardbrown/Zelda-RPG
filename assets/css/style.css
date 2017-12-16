@@ -138,42 +138,39 @@ container {
     color: white;
 }
 
-@media only screen 
-and (max-device-width: 640px), 
-only screen and (max-device-width: 667px), 
-only screen and (max-width: 480px) {
-
-#Ganondorf {
-    background-image: url('../images/ganonbackground.jpg');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-    color: white;
-}
-
-#Dark-Link {
-    background-image: url('../images/darklinkbackground.jpg');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-    color: white;
-}
-
-#Zelda {
-    background-image: url('../images/zeldabackground.jpg');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-    color: white;
-}
-
-#Link {
-    background-image: url('../images/linkbackground.png');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-    color: white;
-}
-
+@media only screen and (max-width: 640px) {
     
-}
+    #Ganondorf {
+        background-image: url('../images/ganonbackground.jpg');
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: white;
+    }
+    
+    #Dark-Link {
+        background-image: url('../images/darklinkbackground.jpg');
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: white;
+    }
+    
+    #Zelda {
+        background-image: url('../images/zeldabackground.jpg');
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: white;
+    }
+    
+    #Link {
+        background-image: url('../images/linkbackground.png');
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: white;
+    }
+     
+    }
+    
