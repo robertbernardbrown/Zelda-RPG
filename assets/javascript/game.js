@@ -5,19 +5,20 @@ $(document).ready(function(){
     var isDefender = false;
     var isBattle = false; 
     var heroes = {   
-    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/link1.wav')),
-    hero_2: new MakeHero ('Zelda', 150, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zelda1.wav')),
-    hero_3: new MakeHero ('Dark-Link', 100, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklink1.wav')),
-    hero_4: new MakeHero ('Ganondorf', 180, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorf1.wav'))
+    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
+    hero_2: new MakeHero ('Zelda', 150, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
+    hero_3: new MakeHero ('Dark-Link', 100, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklinkIntro.wav'), [new Audio ('assets/sounds/darklinkAttack.wav'), new Audio ('assets/sounds/darklinkAttack2.wav')]),
+    hero_4: new MakeHero ('Ganondorf', 180, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorfIntro.wav'), [new Audio ('assets/sounds/ganondorfAttack.wav'), new Audio ('assets/sounds/ganondorfAttack2.wav')])
     };
    
     //constructor for character objects
-    function MakeHero (name, hitPoints, attackPoints, image, sounds) {
+    function MakeHero (name, hitPoints, attackPoints, image, sounds, attackSounds) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.attackPoints = attackPoints;
         this.image = image;
         this.sounds = sounds;
+        this.attackSounds = attackSounds;
     }
 
     //render objects and supplementary headings and divs to the page
@@ -53,7 +54,6 @@ $(document).ready(function(){
             isDefender = true;
             champion();
             champion().sounds.play();
-            console.log(champion().sounds)
         }
     }
 
@@ -91,10 +91,17 @@ $(document).ready(function(){
         }
     }
 
+    function randomAttackSound () {
+        var multiplier = Math.floor(Math.random() * (champion().attackSounds.length));
+        console.log(multiplier);
+        champion().attackSounds[multiplier].play();
+    }
+
     var counter = 0
     function fight () {
         noAttack();
         if (isBattle) {
+            randomAttackSound();
             $('.fight-text-hero').empty();
             $('.fight-text-villain').empty();
                 if (champion().hitPoints > 0 && champion().hitPoints > villain().attackPoints && villain().hitPoints > 0 && villain().hitPoints > champion().attackPoints) {
@@ -126,6 +133,7 @@ $(document).ready(function(){
 
             if (champion().hitPoints <= 0) {
                 lose();
+                isBattle = false;
             }
             else if (villain().hitPoints <= 0) {
                 chooseAnotherHero();
@@ -161,12 +169,16 @@ $(document).ready(function(){
         $('#' + villain().name).detach();
         $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
         $('.fight-text').addClass('winner');
+        var winningTheme = new Audio ('assets/sounds/youwin.mp3')
+        winningTheme.play();
     }
 
     function lose () {
         $('.fight-text').append('<h3> You lost! Try Again? </h3>');
         $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
         var isBattle = false; 
+        var losingTheme = new Audio ('assets/sounds/gameover.mp3')
+        losingTheme.play();
     }
 
     function reset () {
@@ -178,15 +190,21 @@ $(document).ready(function(){
         $('.enemies').empty();
         $('.fight').empty();
         $('.defender').empty();
-        heroes = {   
-            hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
-            hero_2: new MakeHero ('Zelda', 100, 8, '<img src="assets/images/zelda.png" alt="zelda png">'),
-            hero_3: new MakeHero ('Dark-Link', 100, 8, '<img src="assets/images/dark-link.png" alt="dark link png">'),
-            hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+        var heroes = {   
+            hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
+            hero_2: new MakeHero ('Zelda', 150, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
+            hero_3: new MakeHero ('Dark-Link', 100, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklinkIntro.wav'), [new Audio ('assets/sounds/darklinkAttack.wav'), new Audio ('assets/sounds/darklinkAttack2.wav')]),
+            hero_4: new MakeHero ('Ganondorf', 180, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorfIntro.wav'), [new Audio ('assets/sounds/ganondorfAttack.wav'), new Audio ('assets/sounds/ganondorfAttack2.wav')])
             };
         counter = 0;
         winCounter = 0;
         render(heroes);
+    }
+
+    function heyListen () {
+        var navi = [new Audio ('assets/sounds/hey.wav'), new Audio ('assets/sounds/listen.wav')];
+        navi[0].play();
+        setTimeout( function () {navi[1].play()}, 500);
     }
 
 
@@ -196,4 +214,5 @@ $(document).ready(function(){
     $(document).on('click', '.reset', reset);
     
     render(heroes);
+    heyListen();
 });
