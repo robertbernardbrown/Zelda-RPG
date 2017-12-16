@@ -1,131 +1,55 @@
-<!Doctype html>
-<html lang='en-us'>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bob Brown - Zelda RPG</title>
 
-<head>
-  <meta charset='UTF-8'>
-  <title>Bob Brown - Zelda RPG</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
 
-<body>
+    <div class = "container">
 
-    <div class = 'header title'>
-        <h1>ZELDA RPG GAME</h1>
-    </div>
 
-    <div class = 'hero-selection'>
-        <h2>Choose a hero:</h2>
-            <div class = 'hero link' value = '120' attackpoints = '8'>
-                <h3>Link</h3>
-                    <img src = 'assets/images/link.png' alt = 'link png'>
-            </div>
-            <div class = 'hero dark-link' value = '100' attackpoints = '8'>
-                <h3>Dark&nbspLink</h3>
-                    <img src = 'assets/images/dark-link.png' alt = 'dark link png'>
-            </div>
-            <div class = 'hero ganondorf' value = '150' attackpoints = '8'>
-                <h3>Ganondorf</h3>
-                    <img src = 'assets/images/ganondorf.png' alt = 'ganondorf png'>
-            </div>
-            <div class = 'hero zelda' value = '100' attackpoints = '8'>
-                <h3>Zelda</h3>
-                    <img src = 'assets/images/zelda.png' alt = 'zelda png'>
-            </div>
-    </div>
-
-    <div class = 'your-hero'>
-        <h2>Your hero:</h2>
-    </div>
-
-    <div class = 'enemies'>
-        <h2>Enemies available to attack:</h2>
-    </div>
-
-    <div class = 'fight'>
-        <h2>Fight Section</h2>
-        <button type = 'button' class = 'attack' >Attack</button>
-    </div>
-
-    <div class = 'defender'>
-        <h2>Defender:</h2>
-    </div>
-
-    <!-- 
+        <div class = 'page-header text-center'>
+                <h1>THE LEGEND OF ZELDA RPG</h1>
+        </div>
         
-        When the game starts, the player will choose a character by clicking on the fighter's picture. The player will fight as that character for the rest of the game.
+        <div class = 'page-header hero-selection container'>
+            <h2>Choose a hero:</h2>
+                <div class="row display"> 
+                </div>
+        </div>
     
-    The player must then defeat all of the remaining fighters. Enemies should be moved to a different area of the screen.
-    
-    The player chooses an opponent by clicking on an enemy's picture.
-    
-    Once the player selects an opponent, that enemy is moved to a defender area.
-    
-    The player will now be able to click the attack button.
-    
-    Whenever the player clicks attack, their character damages the defender. The opponent will lose HP (health points). These points are displayed at the bottom of the defender's picture.
-    The opponent character will instantly counter the attack. When that happens, the player's character will lose some of their HP. These points are shown at the bottom of the player character's picture.
-    The player will keep hitting the attack button in an effort to defeat their opponent.
-    When the defender's HP is reduced to zero or below, remove the enemy from the defender area. The player character can now choose a new opponent.
-    The player wins the game by defeating all enemy characters. The player loses the game the game if their character's HP falls to zero or below.
-    Option 2 Game design notes
-    Each character in the game has 3 attributes: Health Points, Attack Power and Counter Attack Power.
-    
-    Each time the player attacks, their character's Attack Power increases by its base Attack Power.
-    
-    For example, if the base Attack Power is 6, each attack will increase the Attack Power by 6 (12, 18, 24, 30 and so on).
-    The enemy character only has Counter Attack Power.
-    
-    Unlike the player's Attack Points, Counter Attack Power never changes.
-    The Health Points, Attack Power and Counter Attack Power of each character must differ.
-    
-    No characters in the game can heal or recover Health Points.
-    
-    A winning player must pick their characters wisely by first fighting an enemy with low Counter Attack Power. This will allow them to grind Attack Power and to take on enemies before they lose all of their Health Points. Healing options would mess with this dynamic.
-    Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player. 
+        <div class = 'page-header col-xs-6 col-md-3 your-hero'>
+        </div>
 
-        1. set up html
-            - title screen
-                - name of game (div)
-                - all four characters you can play as (four different divs with divs nested inside)
-                    - name above character picture
-                    - character picture
-                    - hitpoints underneath the character
-                - Enemies available to attack area (div)
-                - Fight Section (div)
-                - Attack button (div)
-                - Defender section (div)
-                Additional assets
-                - background picture
-                - music to play during game
-        2. script
-            - Attack button is not functional until a hero and defender have been chosen
-                - attack should say that no enemy is there
-            - User can only click to choose a hero to start
-            - After user chooses hero, they must choose from a fixed defender pool
-                - turn defender divs red
-            - Once defender is chosen, pictures move to fight area
-                - turn defender div to black
-            - User can then hit attack button
-                - play noise with each attack
-            - hitpoints decrease on hero and defender with each attack
-            - defender attack points stay same but hero attack points grow by base amount every attack
-                - display the hero name and say how much the attack power was for each attack
-                - do the same for the defender
-            - hero or defender is defeated when hit points equal 0
-            - if the hero loses, display lose screen and restart game
-            - if hero wins, the defender screen comes back and the user gets to choose a new defender to fight
-                - get rid of the defeated defender div
-                - display message saying the defender was defeated and the user can choose a new defender
-                - hitpoints remain the same
-                - attack points leave off at the level they are at
-                - defeated defender is greyed out
-            - if hero wins all, display win screen
-                - allow user to play again
+        <div class = 'page-header col-xs-6 col-md-3 defender'>
+        </div>
 
-    -->
+        <div class = 'page-header col-xs-6 col-md-3 fight'>
+        </div>
+    
+        <div class = 'page-header col-xs-6 col-md-3 enemies'>
+        </div>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='assets/javascript/game.js'></script>
+    </div>
 
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='assets/javascript/game.js'></script>
+  </body>
 </html>

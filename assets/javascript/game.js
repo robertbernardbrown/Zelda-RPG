@@ -1,111 +1,191 @@
-// initialize JS with jQuery
 $(document).ready(function(){
 
-    var heroChosen = true;
-    var enemyChosen = false;
-    var battleVar = false; 
+    var isHero = true;
+    var isDefender = false;
+    var isBattle = false; 
+    var heroes = {   
+    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
+    hero_2: new MakeHero ('Zelda', 100, 8, '<img src="assets/images/zelda.png" alt="zelda png">'),
+    hero_3: new MakeHero ('Dark-Link', 100, 8, '<img src="assets/images/dark-link.png" alt="dark link png">'),
+    hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+    };
    
-    var allHeroes = {
-        link: {
-            name: 'Link',
-            hitpoints: 120,
-            attackpoints: 8
-        },
-        darkLink: {
-            name: 'Dark Link',
-            hitpoints: 100,
-            attackpoints: 8
-        },
-        ganondorf: {
-            name: 'Ganondorf',
-            hitpoints: 150,
-            attackpoints: 8
-        },
-        zelda: {
-            name: 'Zelda',
-            hitpoints: 100,
-            attackpoints: 8
+    function MakeHero (name, hitPoints, attackPoints, image) {
+        this.name = name;
+        this.hitPoints = hitPoints;
+        this.attackPoints = attackPoints;
+        this.image = image;
+    }
+
+    function render (object) {
+        for (i in object) {
+            if (!object.hasOwnProperty(i)) continue; {
+        $('.display').prepend('<div class="col-xs-6 col-md-3 hero thumbnail"' + 'id = "' + object[i].name + '">');
+        $('#' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
+                  .append(object[i].image)
+                  .append('<h2>' + object[i].hitPoints + '</h2>')
+        $('.display').append('</div>');
+                    }
+                }
+                $('.your-hero').append('<h2> Your hero: </h2>');
+                $('.enemies').append('<h2> Enemies available to attack: </h2>');
+                $('.fight').prepend('<h2> Fight Section </h2>');
+                $('.fight').append('<div class = "btn btn-primary attack">Attack</div>');
+                $('.fight').append('<div class = "fight-text"></div>');
+                $('.defender').append('<h2> Defender: </h2>');
+            }
+
+    function chooseHero () {
+        if(isHero) {
+            $(this).detach();
+            $(this).removeClass('hero');
+            $(this).addClass('champion');
+            $(this).appendTo('.your-hero');
+            $('.hero').addClass('defenders');
+            $('.defenders').appendTo('.enemies')
+            $('.hero').removeClass('hero');
+            isHero = false;
+            isDefender = true;
+            champion();
         }
     }
 
-    function displayHitpoints () {
-        linkHP = allHeroes.link.hitpoints
-        darkLinkHP = allHeroes.darkLink.hitpoints
-        ganondorfHP = allHeroes.ganondorf.hitpoints
-        zeldaHP = allHeroes.zelda.hitpoints
-
-        $('.link').append('<h3>' + linkHP + '</h3>')
-        $('.dark-link').append('<h3>' + darkLinkHP + '</h3>')
-        $('.ganondorf').append('<h3>' + ganondorfHP + '</h3>')
-        $('.zelda').append('<h3>' + zeldaHP + '</h3>')
-    }
-  
-    function heroChoice() {
-     
-        if (heroChosen) {
-            $(this).removeClass( 'hero' );      
-            $(this).addClass( 'champion' );
-            $(this).insertAfter( $( '.your-hero') );
-            $('.hero').insertAfter ( $( '.enemies') );    
-            $('.hero').addClass( 'villain-choices' );
-            $('.villain-choices').removeClass( 'hero' );
-            
-            heroChosen = false;
-            enemyChosen = true;
+    function chooseDefender () {
+        if(isDefender) {
+            $(this).detach();
+            $(this).appendTo('.defender');
+            $(this).removeClass('defenders');
+            $(this).addClass('villain');
+            isDefender = false;
+            isBattle = true;
+            villain();
+            $('.fight-text').empty();
+            $('.fight-text').append('<div class = "fight-text-hero"></div>');
+            $('.fight-text').append('<div class = "fight-text-villain"></div>');
         }
     }
-
-    function villainChoice () {
-        if (enemyChosen) {     
-            $(this).addClass( 'villain' );
-            $(this).insertAfter( $( '.defender') );
-            enemyChosen = false;
-            battleVar = true;
-        }
-    }
-
-    function battle () {
-        if (battleVar) {
-        allHeroes.link.hitpoints - allHeroes.ganondorf.attackpoints
-        
-        }
-    }
-
-
-    $('.hero').on('click', heroChoice);
-    $(document).on('click','.villain-choices', villainChoice);
-    $('.attack').on('click', battle);
     
-    displayHitpoints();
+    var champion = function () {
+        var champId = $('.champion').attr('id');
+        for(var i in heroes) {
+            if( heroes[i].name == champId) {
+                return (heroes[i]);
+            }
+        }
+    }
 
+    var villain = function () { 
+        var villainId = $('.villain').attr('id');
+        for(var i in heroes) {
+            if( heroes[i].name == villainId) {
+                return (heroes[i]);
+            }
+        }
+    }
+
+    var counter = 0
+    function fight () {
+        noAttack();
+        if (isBattle) {
+            $('.fight-text-hero').empty();
+            $('.fight-text-villain').empty();
+                if (champion().hitPoints > 0 && champion().hitPoints > villain().attackPoints && villain().hitPoints > 0 && villain().hitPoints > champion().attackPoints) {
+                    villain().hitPoints -= champion().attackPoints;
+                    champion().hitPoints -= villain().attackPoints;
+                    $('.fight-text-hero').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hitpoints. </h2>');
+                    $('.champion h2').html(champion().hitPoints);
+                    $('.fight-text-villain').html('<h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>');
+                    $('.villain h2').html(villain().hitPoints);
+                }
+                else if (champion().hitPoints <= villain().attackPoints) {
+                    champion().hitPoints -= villain().attackPoints;
+                    $('.champion h2').html(champion().hitPoints);
+                    $('.fight-text-villain').html('<h2>' + villain().name + ' attacked you for ' + villain().attackPoints + ' hitpoints. </h2>');
+                }
+                else if (villain().hitPoints <= champion().attackPoints) {
+                    villain().hitPoints -= champion().attackPoints;
+                    $('.villain h2').html(villain().hitPoints);
+                    $('.fight-text-hero').html('<h2> You attacked ' + villain().name + ' for ' + champion().attackPoints + ' hitpoints. </h2>');
+                }
+
+            counter++
+            if (counter === 1) {
+                champion().attackPoints = champion().attackPoints + (champion().attackPoints);
+            }
+            else if (counter > 1) {
+                champion().attackPoints = champion().attackPoints + (champion().attackPoints / counter);
+            }
+
+            if (champion().hitPoints <= 0) {
+                lose();
+            }
+            else if (villain().hitPoints <= 0) {
+                chooseAnotherHero();
+                isBattle = false;
+            }
+        }
+    }
+
+    function noAttack () {
+        if (isHero && !isBattle && !isDefender) {
+            $('.fight-text').html('<h3> Please choose a champion </h3>');
+        }
+        else if (!isHero && !isBattle && isDefender) {
+            $('.fight-text').html('<h3> Please choose an enemy </h3>');
+        }
+    }
+
+    var winCounter = 0;
+    function chooseAnotherHero () {
+        winCounter++;
+        if (winCounter < (Object.keys(heroes).length - 1)) {
+        $('.fight-text').append('<h3> You defeated ' + villain().name + '! Choose the next defender to attack. </h3>');
+        $('#' + villain().name).detach();
+        isDefender = true;
+        }
+        else if (winCounter === (Object.keys(heroes).length - 1)) {
+            win();
+        }
+    }
+
+    function win () {
+        $('.fight-text').append('<h3> You defeated ' + villain().name + '! You won! The Triforce is yours. Play again?');
+        $('#' + villain().name).detach();
+        $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
+        $('.fight-text').addClass('winner');
+    }
+
+    function lose () {
+        $('.fight-text').append('<h3> You lost! Try Again? </h3>');
+        $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
+        var isBattle = false; 
+    }
+
+    function reset () {
+        isHero = true;
+        isDefender = false;
+        isBattle = false; 
+        $('.display').empty();
+        $('.your-hero').empty();
+        $('.enemies').empty();
+        $('.fight').empty();
+        $('.defender').empty();
+        heroes = {   
+            hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
+            hero_2: new MakeHero ('Zelda', 100, 8, '<img src="assets/images/zelda.png" alt="zelda png">'),
+            hero_3: new MakeHero ('Dark-Link', 100, 8, '<img src="assets/images/dark-link.png" alt="dark link png">'),
+            hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+            };
+        counter = 0;
+        winCounter = 0;
+        render(heroes);
+    }
+
+
+    $(document).on('click', '.hero', chooseHero);
+    $(document).on('click', '.defenders', chooseDefender);
+    $(document).on('click', '.fight', fight);
+    $(document).on('click', '.reset', reset);
+    
+    render(heroes);
 });
-
-// 1. onclick function - user picks which hero they want to be
-// when clicked, hero selection space dissappears - change div class on the chosen hero to the YOUR HERO section
-// defenders switch to Enemies available to attack area - change div class to the enemy section
-
-// 2. onclick function - user picks which defender to play
-// switch class of chosen defender to defender section
-
-// 3. onclick function - attack
-// onclick, run the function to display "you attacked X for X damage, X attacked you for X damage"
-
-// 4. run function to increment the attack power for the hero
-
-// 5. function to run when hitpoints for hero reach 0
-// display loser message and show restart button
-
-// 6. restart button
-// reset the div classes to how they were at the start
-// reset switch locks
-
-// 7. function to run when hitpoints for defender reach 0
-// display winner message and ask them to choose another defender to fight
-// change the old defender class to hidden
-// change the new choice to defender
-
-// 8. function to run when all three defenders are beaten
-// display win message
-// show restart button
-
-// set a variable to incrment whenever a defender is beaten? listen for the third win?
