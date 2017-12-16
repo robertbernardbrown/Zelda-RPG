@@ -53,7 +53,7 @@ container {
 }
 
 .champion {
-    border: 2px solid blue;
+    border: 2px solid rgb(128, 128, 128);
     background: yellow;
     text-align: center;
     outline-offset: 2px;
@@ -69,7 +69,7 @@ container {
 
 .defenders {
     background: red; 
-    border: 2px solid blue;
+    border: 2px solid rgb(128, 128, 128);
     text-align: center; 
     width: 100%;
     float: none;
@@ -84,7 +84,7 @@ container {
 .villain {
     background: black;  
     color: white;   
-    border: 2px solid blue;
+    border: 2px solid rgb(128, 128, 128);
     text-align: center; 
     outline-offset: 2px;
     width: 100%;
