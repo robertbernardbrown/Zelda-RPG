@@ -139,9 +139,9 @@ container {
 }
 
 @media only screen 
-and (min-width: 414px) 
-and (max-width: 736px) 
-and (-webkit-min-device-pixel-ratio: 3) { 
+and (max-device-width: 640px), 
+only screen and (max-device-width: 667px), 
+only screen and (max-width: 480px) {
 
 #Ganondorf {
     background-image: url('../images/ganonbackground.jpg');
