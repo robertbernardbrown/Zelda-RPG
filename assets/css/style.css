@@ -3,22 +3,29 @@
     src: url('HyliaSerifBeta-Regular.otf'); 
 }
 
-.defender > h2, .your-hero > h2, .villain > h1, .champion > h1, .hero > h1, .fight > h2, .enemies > h2, .fight-text-hero > h2, .fight-text-villain > h2 {
+.defender > h2, .your-hero > h2, .villain > h1, .champion > h1, .hero > h1, .fight > h2, .defenders > h1, .fight-text-hero > h2, .fight-text-villain > h2, .enemies > h2 {
     font-size: 1em;
 }
 
 body {
     font-family: HyliaSerifBeta-Regular, Georgia, 'Times New Roman', Times, serif;
     font-size: 2em;
+    background-image: url('../images/background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
 }
 
 container {
     border: 2px solid green;
     float: none;
+    margin: 0 auto;
 }
 
 .page-header {
-    border: 2px solid purple;
+    border: 2px solid rgb(128, 128, 128);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .display {
@@ -27,7 +34,7 @@ container {
 }
 
 .hero {
-    border: 2px solid blue;
+    border: 2px solid rgb(128, 128, 128);
     text-align: center;
     outline-offset: 2px;
     width: 100%;
@@ -38,12 +45,11 @@ container {
 .hero > img {
     max-width: 100%;
     max-height: 150px;
-    border: 2px solid red;
 }
 
 .hero:hover {
-    border: 2px solid grey;
-    outline-offset: 2px;
+    border: 4px solid rgb(255, 255, 255);
+    outline-offset: 4px;
 }
 
 .champion {
@@ -89,4 +95,38 @@ container {
 .villain > img {
     max-width: 100%;
     max-height: 170px;
+}
+
+/* Hero backgrounds */
+
+#Ganondorf {
+    background-image: url('../images/ganonbackground.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Dark-Link {
+    background-image: url('../images/darklinkbackground.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Zelda {
+    background-image: url('../images/zeldabackground.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+#Link {
+    background-image: url('../images/linkbackground.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
 }
