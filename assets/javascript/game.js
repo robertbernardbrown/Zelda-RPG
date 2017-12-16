@@ -57,6 +57,7 @@ $(document).ready(function(){
         }
     }
 
+    //when isDefender = true, this function allows user to choose a defender to fight against
     function chooseDefender () {
         if(isDefender) {
             $(this).detach();
@@ -73,6 +74,7 @@ $(document).ready(function(){
         }
     }
     
+    //when a champion is declared, grabs the associated data from the heroes object
     var champion = function () {
         var champId = $('.champion').attr('id');
         for(var i in heroes) {
@@ -82,6 +84,7 @@ $(document).ready(function(){
         }
     }
 
+    //when a villain is declared, grabs the associated data from the object
     var villain = function () { 
         var villainId = $('.villain').attr('id');
         for(var i in heroes) {
@@ -91,12 +94,15 @@ $(document).ready(function(){
         }
     }
 
+    //choose a random sound to play for each hero
     function randomAttackSound () {
         var multiplier = Math.floor(Math.random() * (champion().attackSounds.length));
         console.log(multiplier);
         champion().attackSounds[multiplier].play();
     }
 
+    //launches when fight button is pressed
+    //updates hero life and villain life based on opposer's hitpoints
     var counter = 0
     function fight () {
         noAttack();
@@ -142,6 +148,7 @@ $(document).ready(function(){
         }
     }
 
+    //prevents attacking when hero or defender isn't set
     function noAttack () {
         if (isHero && !isBattle && !isDefender) {
             $('.fight-text').html('<h3> Please choose a champion </h3>');
@@ -151,6 +158,7 @@ $(document).ready(function(){
         }
     }
 
+    //prompts user to choose another defender when previous defender is defeated - will launch win function after a certain number of launches
     var winCounter = 0;
     function chooseAnotherHero () {
         winCounter++;
@@ -164,6 +172,7 @@ $(document).ready(function(){
         }
     }
 
+    //prompts user about their win
     function win () {
         $('.fight-text').append('<h3> You defeated ' + villain().name + '! You won! The Triforce is yours. Play again?');
         $('#' + villain().name).detach();
@@ -173,6 +182,7 @@ $(document).ready(function(){
         winningTheme.play();
     }
 
+    //prompts users about their loss
     function lose () {
         $('.fight-text').append('<h3> You lost! Try Again? </h3>');
         $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
@@ -181,6 +191,7 @@ $(document).ready(function(){
         losingTheme.play();
     }
 
+    //resets the game when the reset button is pressed and resets globals and hero object
     function reset () {
         isHero = true;
         isDefender = false;
@@ -201,6 +212,7 @@ $(document).ready(function(){
         render(heroes);
     }
 
+    //runs audio on page load. Everyone's favorite two words from the game
     function heyListen () {
         var navi = [new Audio ('assets/sounds/hey.wav'), new Audio ('assets/sounds/listen.wav')];
         navi[0].play();
