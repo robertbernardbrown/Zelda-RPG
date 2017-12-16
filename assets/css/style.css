@@ -1,7 +1,11 @@
 @font-face { 
     font-family: HyliaSerifBeta-Regular; 
     src: url('HyliaSerifBeta-Regular.otf'); 
-} 
+}
+
+.defender > h2, .your-hero > h2, .villain > h1, .champion > h1, .hero > h1, .fight > h2, .enemies > h2, .fight-text-hero > h2, .fight-text-villain > h2 {
+    font-size: 1em;
+}
 
 body {
     font-family: HyliaSerifBeta-Regular, Georgia, 'Times New Roman', Times, serif;
@@ -9,22 +13,32 @@ body {
 }
 
 container {
-    border: 2px solid green
+    border: 2px solid green;
+    float: none;
 }
 
 .page-header {
     border: 2px solid purple;
 }
 
+.display {
+    margin: 0 auto;
+    background: grey;
+}
+
 .hero {
     border: 2px solid blue;
     text-align: center;
     outline-offset: 2px;
+    width: 100%;
+    float: none;
+    margin: 0 auto;
 }
 
 .hero > img {
     max-width: 100%;
-    max-height: 170px;
+    max-height: 150px;
+    border: 2px solid red;
 }
 
 .hero:hover {
@@ -37,7 +51,9 @@ container {
     background: yellow;
     text-align: center;
     outline-offset: 2px;
-    flex: 1;
+    width: 100%;
+    float: none;
+    margin: 0 auto;
 }
 
 .champion > img {
@@ -49,11 +65,14 @@ container {
     background: red; 
     border: 2px solid blue;
     text-align: center; 
+    width: 100%;
+    float: none;
+    margin: 0 auto;
 }
 
 .defenders > img {
     max-width: 100%;
-    max-height: 170px;
+    max-height: 150px;
 }
 
 .villain {
@@ -62,6 +81,9 @@ container {
     border: 2px solid blue;
     text-align: center; 
     outline-offset: 2px;
+    width: 100%;
+    float: none;
+    margin: 0 auto;
 }
 
 .villain > img {

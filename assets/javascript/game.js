@@ -20,11 +20,11 @@ $(document).ready(function(){
     function render (object) {
         for (i in object) {
             if (!object.hasOwnProperty(i)) continue; {
-        $('.row').prepend('<div class="hero thumbnail"' + 'id = "' + object[i].name + '">');
+        $('.display').prepend('<div class="col-xs-6 col-md-3 hero thumbnail"' + 'id = "' + object[i].name + '">');
         $('#' + object[i].name).prepend('<h1>' + object[i].name + '</h1>')
                   .append(object[i].image)
                   .append('<h2>' + object[i].hitPoints + '</h2>')
-        $('.row').append('</div>');
+        $('.display').append('</div>');
                     }
                 }
                 $('.your-hero').append('<h2> Your hero: </h2>');
@@ -164,7 +164,7 @@ $(document).ready(function(){
         isHero = true;
         isDefender = false;
         isBattle = false; 
-        $('.row').empty();
+        $('.display').empty();
         $('.your-hero').empty();
         $('.enemies').empty();
         $('.fight').empty();
