@@ -1,22 +1,26 @@
 $(document).ready(function(){
 
+    //declare globals
     var isHero = true;
     var isDefender = false;
     var isBattle = false; 
     var heroes = {   
-    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">'),
-    hero_2: new MakeHero ('Zelda', 100, 8, '<img src="assets/images/zelda.png" alt="zelda png">'),
-    hero_3: new MakeHero ('Dark-Link', 100, 8, '<img src="assets/images/dark-link.png" alt="dark link png">'),
-    hero_4: new MakeHero ('Ganondorf', 150, 8, '<img src="assets/images/ganondorf.png" alt="ganondorf png">')
+    hero_1: new MakeHero ('Link', 120, 8, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/link1.wav')),
+    hero_2: new MakeHero ('Zelda', 150, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zelda1.wav')),
+    hero_3: new MakeHero ('Dark-Link', 100, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklink1.wav')),
+    hero_4: new MakeHero ('Ganondorf', 180, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorf1.wav'))
     };
    
-    function MakeHero (name, hitPoints, attackPoints, image) {
+    //constructor for character objects
+    function MakeHero (name, hitPoints, attackPoints, image, sounds) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.attackPoints = attackPoints;
         this.image = image;
+        this.sounds = sounds;
     }
 
+    //render objects and supplementary headings and divs to the page
     function render (object) {
         for (i in object) {
             if (!object.hasOwnProperty(i)) continue; {
@@ -35,6 +39,7 @@ $(document).ready(function(){
                 $('.defender').append('<h2> Defender: </h2>');
             }
 
+    //when isHero = true, this function allows a user to choose a hero which is then moved to a new div and sets isDefender = true
     function chooseHero () {
         if(isHero) {
             $(this).detach();
@@ -47,6 +52,8 @@ $(document).ready(function(){
             isHero = false;
             isDefender = true;
             champion();
+            champion().sounds.play();
+            console.log(champion().sounds)
         }
     }
 
@@ -59,6 +66,7 @@ $(document).ready(function(){
             isDefender = false;
             isBattle = true;
             villain();
+            villain().sounds.play();
             $('.fight-text').empty();
             $('.fight-text').append('<div class = "fight-text-hero"></div>');
             $('.fight-text').append('<div class = "fight-text-villain"></div>');
