@@ -101,7 +101,7 @@ container {
 
 #Ganondorf {
     background-image: url('../images/ganonbackground.jpg');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     color: white;
@@ -117,7 +117,7 @@ container {
 
 #Zelda {
     background-image: url('../images/zeldabackground.jpg');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     color: white;
@@ -125,8 +125,15 @@ container {
 
 #Link {
     background-image: url('../images/linkbackground.png');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+.winner {
+    background-image: url('../images/triforce.gif');
+    background-repeat: no-repeat;
     background-position: center;
     color: white;
 }

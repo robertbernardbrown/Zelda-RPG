@@ -152,6 +152,7 @@ $(document).ready(function(){
         $('.fight-text').append('<h3> You defeated ' + villain().name + '! You won! The Triforce is yours. Play again?');
         $('#' + villain().name).detach();
         $('.fight-text').append('<div class = "btn btn-primary reset">Start Over</div>');
+        $('.fight-text').addClass('winner');
     }
 
     function lose () {
