@@ -5,8 +5,8 @@ $(document).ready(function(){
     var isDefender = false;
     var isBattle = false; 
     var heroes = {   
-    hero_1: new MakeHero ('Link', 120, 8, 10, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
-    hero_2: new MakeHero ('Zelda', 150, 20, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
+    hero_1: new MakeHero ('Link', 120, 9, 10, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
+    hero_2: new MakeHero ('Zelda', 100, 15, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
     hero_3: new MakeHero ('Dark-Link', 110, 10, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklinkIntro.wav'), [new Audio ('assets/sounds/darklinkAttack.wav'), new Audio ('assets/sounds/darklinkAttack2.wav')]),
     hero_4: new MakeHero ('Ganondorf', 180, 3, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorfIntro.wav'), [new Audio ('assets/sounds/ganondorfAttack.wav'), new Audio ('assets/sounds/ganondorfAttack2.wav')])
     };
@@ -202,8 +202,8 @@ $(document).ready(function(){
         $('.fight').empty();
         $('.defender').empty();
         heroes = {   
-            hero_1: new MakeHero ('Link', 120, 8, 10, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
-            hero_2: new MakeHero ('Zelda', 150, 20, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
+            hero_1: new MakeHero ('Link', 120, 9, 10, '<img src="assets/images/link.png" alt="link png">', new Audio ('assets/sounds/linkIntro.wav'), [new Audio ('assets/sounds/linkAttack.wav'), new Audio ('assets/sounds/linkAttack2.wav')]),
+            hero_2: new MakeHero ('Zelda', 100, 15, 20, '<img src="assets/images/zelda.png" alt="zelda png">', new Audio ('assets/sounds/zeldaIntro.wav'), [new Audio ('assets/sounds/zeldaAttack.wav'), new Audio ('assets/sounds/zeldaAttack2.wav')]),
             hero_3: new MakeHero ('Dark-Link', 110, 15, 5, '<img src="assets/images/dark-link.png" alt="dark link png">', new Audio ('assets/sounds/darklinkIntro.wav'), [new Audio ('assets/sounds/darklinkAttack.wav'), new Audio ('assets/sounds/darklinkAttack2.wav')]),
             hero_4: new MakeHero ('Ganondorf', 180, 3, 25, '<img src="assets/images/ganondorf.png" alt="ganondorf png">', new Audio ('assets/sounds/ganondorfIntro.wav'), [new Audio ('assets/sounds/ganondorfAttack.wav'), new Audio ('assets/sounds/ganondorfAttack2.wav')])
             };
