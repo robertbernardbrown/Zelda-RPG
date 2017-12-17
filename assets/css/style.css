@@ -138,7 +138,7 @@ container {
     color: white;
 }
 
-@media only screen and (max-width: 640px) {
+/* @media only screen and (max-width: 640px) {
     
     #Ganondorf {
         background-image: url('../images/ganonbackground.jpg');
@@ -171,5 +171,5 @@ container {
         background-size: cover;
     }
      
-    }
+    } */
     
