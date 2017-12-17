@@ -102,7 +102,6 @@ container {
 #Ganondorf {
     background-image: url('../images/ganonbackground.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     color: white;
 }
@@ -110,24 +109,21 @@ container {
 #Dark-Link {
     background-image: url('../images/darklinkbackground.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background-position: 50% 30%;
     color: white;
 }
 
 #Zelda {
     background-image: url('../images/zeldabackground.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background-position: 50% 20%;
     color: white;
 }
 
 #Link {
     background-image: url('../images/linkbackground.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background-position: 50% 40%;
     color: white;
 }
 
@@ -149,19 +145,19 @@ container {
     #Dark-Link {
         background-image: url('../images/darklinkbackground.jpg');
         background-repeat: repeat;
-        background-position: center;
+        background-position: 50% 20%;
     }
     
     #Zelda {
         background-image: url('../images/zeldabackground.jpg');
         background-repeat: repeat;
-        background-position: center;
+        background-position: 50% 20%;
     }
     
     #Link {
         background-image: url('../images/linkbackground.png');
         background-repeat: repeat;
-        background-position: center;
+        background-position: 50% 40%;
     }
 
     body {
