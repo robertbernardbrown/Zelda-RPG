@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    //declare globals
+    //declare global variables
     var isHero = true;
     var isDefender = false;
     var isBattle = false; 
@@ -228,27 +228,3 @@ $(document).ready(function(){
     render(heroes);
     heyListen();
 });
-
-//CREDITS
-
-//IMAGES
-//Ganondorf
-//https://en.wikipedia.org/wiki/Ganon
-//https://www.forbes.com/sites/olliebarder/2017/04/24/nintendo-officially-confirms-ganondorfs-full-name-from-the-zelda-series/#45afb15e4ec9
-//Link
-//http://mcleodgaming.wikia.com/wiki/File:Link.png
-//http://the-legend-of-zelda-series.tumblr.com/post/109340004475
-//Zelda
-//http://zelda.wikia.com/wiki/File:Zelda_(SSB_3DS_%26_Wii_U).png
-//https://i.ytimg.com/vi/jo9hNmJm9qc/maxresdefault.jpg
-//Dark-Link
-//http://powerlisting.wikia.com/wiki/File:Dark_Link.png
-//https://orig00.deviantart.net/4ad6/f/2015/084/9/3/dark_link_wallpaper__wallpaper__by_cryo_psycho-d8n3ylj.jpg
-//Triforce
-//https://wifflegif.com/tags/45995-triforce-gifs?page=2
-//Background
-//https://cheetashock.deviantart.com/art/Gold-Triforce-Wallpaper-439572554
-
-//SOUNDS
-//https://downloads.khinsider.com/game-soundtracks/album/legend-of-zelda-ocarina-of-time-original-sound-track
-//http://noproblo.dayjo.org/ZeldaSounds/
