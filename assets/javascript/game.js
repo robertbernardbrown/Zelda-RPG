@@ -212,7 +212,7 @@ $(document).ready(function(){
         render(heroes);
     }
 
-    //runs audio on page load. Everyone's favorite two words from the game
+    //runs audio on page load. Everyone's favorite two words from the original Zelda OOT game
     function heyListen () {
         var navi = [new Audio ('assets/sounds/hey.wav'), new Audio ('assets/sounds/listen.wav')];
         navi[0].play();
